@@ -5,7 +5,8 @@ RUN apt update && apt install --yes python3-pip git
 RUN git config --global user.email "you@example.com" && git config --global user.name "Your Name"
 ARG GIT_AGGREGATOR_VERSION=""
 RUN pip3 install "git-aggregator$GIT_AGGREGATOR_VERSION"
-COPY repo.yaml /root/
+COPY repo.yaml LICENSE /root/
+COPY bin/* /usr/local/bin/
 WORKDIR /root
 ARG ODOO_VERSION=13.0
 ARG DEPTH_MERGE=100

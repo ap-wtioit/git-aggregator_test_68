@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script to log all git commands executed by git-aggregate
+set -x
+/usr/bin/git "$@"
