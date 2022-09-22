@@ -8,6 +8,6 @@ if [[ $remote == "odoo" ]]; then
   git remote add "$remote" https://github.com/odoo/odoo.git
 fi
 git fetch --depth 100 "$remote" 13.0
-git fetch --depth 100 "$remote" refs/pull/99292/head
+git fetch --depth 100 "$remote" refs/pull/99292/head || bash
 
 
