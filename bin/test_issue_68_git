@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+remote=${1:-odoo}
+git clone --filter=blob:none -b 13.0 --depth 100 https://github.com/odoo/odoo.git /root/odoo
+cd /root/odoo
+git checkout -B 13.0
+if [[ $remote == "odoo" ]]; then
+  git remote add "$remote" https://github.com/odoo/odoo.git
+fi
+git fetch --depth 100 "$remote" 13.0
+git fetch --depth 100 "$remote" refs/pull/99292/head
+
+

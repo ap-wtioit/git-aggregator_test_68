@@ -1,8 +1,10 @@
 ARG BASE_IMAGE=debian:buster
-FROM $BASE_IMAGE
+FROM $BASE_IMAGE AS git_only
 RUN apt update && apt install --yes python3-pip git
 # configure git for merge requests done by git-aggregator
 RUN git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+
+FROM git_only
 ARG GIT_AGGREGATOR_VERSION=""
 RUN pip3 install "git-aggregator$GIT_AGGREGATOR_VERSION"
 COPY repo.yaml LICENSE /root/
